@@ -1,9 +1,60 @@
+import styled from "styled-components";
 import React, { useState } from "react";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
-import * as C from "./styles";
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+
+export const Container = styled.div`
+  background-color: #1c1917;
+  color: #e7e5e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+`;
+
+export const Content = styled.div`
+  gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 1px 2px #0003;
+  background-color: #292524;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 5px;
+`;
+
+export const Label = styled.label`
+  font-size: 24px;
+  font-weight: 400;
+  color: #e7e5e4;
+  margin: 1rem auto 2rem;
+`;
+
+export const LabelSignin = styled.label`
+  font-size: 16px;
+  color: #e7e5e4;
+`;
+
+export const LabelError = styled.label`
+  font-size: 14px;
+  color: #dc2626;
+`;
+
+export const Strong = styled.strong`
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: #e7e5e4;
+  }
+`;
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -35,9 +86,9 @@ const Signup = () => {
   };
 
   return (
-    <C.Container>
-      <C.Label>SISTEMA DE LOGIN</C.Label>
-      <C.Content>
+    <Container>
+      <Content>
+        <Label>Registre-se</Label>
         <Input
           type="email"
           placeholder="Digite seu E-mail"
@@ -56,16 +107,16 @@ const Signup = () => {
           value={senha}
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
-        <C.labelError>{error}</C.labelError>
+        <LabelError>{error}</LabelError>
         <Button Text="Inscrever-se" onClick={handleSignup} />
-        <C.LabelSignin>
+        <LabelSignin>
           Já tem uma conta?
-          <C.Strong>
+          <Strong>
             <Link to="/">&nbsp;Entre</Link>
-          </C.Strong>
-        </C.LabelSignin>
-      </C.Content>
-    </C.Container>
+          </Strong>
+        </LabelSignin>
+      </Content>
+    </Container>
   );
 };
 
