@@ -1,9 +1,11 @@
+import React from "react";
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Home from "../pages/Home/Home";
 import Signin from "../pages/Signin/Sigin";
 import Signup from "../pages/Signup/Signup";
+import Login from "../pages/Signin/Login";
 
 const Private = ({ Item }) => {
   const { signed } = useAuth();
@@ -19,6 +21,7 @@ const RoutesApp = () => {
           <Route exact path="/home" element={<Private Item={Home} />} />
           <Route path="/" element={<Signin />} />
           <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
           <Route path="*" element={<Signin />} />
         </Routes>
       </Fragment>
