@@ -3,26 +3,25 @@ import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Home from "../pages/Home/Home";
-import Signin from "../pages/Signin/Sigin";
-import Signup from "../pages/Signup/Signup";
-import Login from "../pages/Signin/Login";
+import Signup from "../pages/Cadastro/CadastroUsuario";
+import Login from "../pages/Login/Login";
+import CadastroUsuario from "../pages/Cadastro/CadastroUsuario";
 
-const Private = ({ Item }) => {
-  const { signed } = useAuth();
+// const Private = ({ Item }) => {
+//   const { signed } = useAuth();
 
-  return signed > 0 ? <Item /> : <Signin />;
-};
+//   return signed > 0 ? <Item /> : <Signin />;
+// };
 
 const RoutesApp = () => {
   return (
     <BrowserRouter>
       <Fragment>
         <Routes>
-          <Route exact path="/home" element={<Private Item={Home} />} />
-          <Route path="/" element={<Signin />} />
-          <Route exact path="/signup" element={<Signup />} />
+          <Route path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/signup" element={<CadastroUsuario />} />
           <Route exact path="/login" element={<Login />} />
-          <Route path="*" element={<Signin />} />
         </Routes>
       </Fragment>
     </BrowserRouter>
