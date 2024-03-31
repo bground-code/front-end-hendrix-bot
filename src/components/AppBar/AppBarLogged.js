@@ -32,7 +32,7 @@ function AppBar() {
     >
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
-          <React.Fragment>
+          {/* <React.Fragment>
             <IconButton variant="plain" onClick={() => setOpen(true)}>
               <MenuRoundedIcon />
             </IconButton>
@@ -64,7 +64,8 @@ function AppBar() {
                 </List>
               </Box>
             </Drawer>
-          </React.Fragment>
+          </React.Fragment> */}
+
           <Stack direction="row" alignItems="center">
             <IconButton disabled>
               <AdbRoundedIcon />

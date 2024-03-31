@@ -15,6 +15,7 @@ import {
   Radio,
 } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBarLogged";
+import SideMenu from "../../components/Menu/SideMenu";
 
 function CadastroUsuario() {
   const [tipoCadastro, setTipoCadastro] = useState("");
@@ -34,14 +35,16 @@ function CadastroUsuario() {
         justifyContent: "center",
         bgcolor: "neutral.900",
         height: "100vh",
+        maxHeight: "100vh",
       }}
     >
       <AppBar></AppBar>
+      <SideMenu></SideMenu>
       <Box
         bgcolor={"neutral.800"}
         marginX={"auto"}
         // marginY={"auto"}
-        width={"70%"}
+        width={"75%"}
         p={2}
         borderRadius={8}
         mt={6}
@@ -102,7 +105,7 @@ function CadastroUsuario() {
           >
             <FormControl>
               <FormLabel>Tipo de usuário:</FormLabel>
-              <RadioGroup onChange={handleTipoCadastro}>
+              <RadioGroup onChange={handleTipoCadastro} defaultValue="admin">
                 <Stack direction="row" spacing={2}>
                   <Radio
                     label="Administrador"
