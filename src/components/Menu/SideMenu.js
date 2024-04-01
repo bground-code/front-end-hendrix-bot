@@ -13,7 +13,7 @@ import {
 
 function SideMenu() {
   return (
-    <Box bgcolor={"neutral.700"} left={0} width={"20%"} p={2} minHeight="100%">
+    <Box bgcolor={"#32383E"} left={0} width={"20%"} p={2} minHeight="100%">
       <Box mt={12}>
         <List>
           <ListItem sx={{ marginY: 1 }}>

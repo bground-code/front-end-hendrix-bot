@@ -23,7 +23,7 @@ function AppBar() {
   const [open, setOpen] = React.useState(false);
   return (
     <Box
-      bgcolor={"neutral.800"}
+      bgcolor={"#171A1C"}
       width={"100%"}
       p={2}
       top={0}

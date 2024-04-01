@@ -3,10 +3,10 @@ import { Box, IconButton, Stack, Typography, Button } from "@mui/joy";
 
 import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
 
-function Navbar() {
+function AppBar() {
   return (
     <Box
-      bgcolor={"neutral.800"}
+      bgcolor={"#171AC"}
       width={"100%"}
       p={1}
       top={0}
@@ -32,4 +32,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default AppBar;
