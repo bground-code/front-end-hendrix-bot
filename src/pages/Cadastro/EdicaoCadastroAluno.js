@@ -28,14 +28,14 @@ function EdicaoCadastroAluno() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        bgcolor: "neutral.900",
+        bgcolor: "#0B0D0E",
         height: "100vh",
       }}
     >
       <AppBar></AppBar>
       <SideMenu></SideMenu>
       <Box
-        bgcolor={"neutral.800"}
+        bgcolor={"#171A1C"}
         marginX={"auto"}
         width={"70%"}
         p={2}
