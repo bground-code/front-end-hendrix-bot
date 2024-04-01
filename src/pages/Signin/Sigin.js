@@ -45,7 +45,7 @@
 // export const LabelError = styled.label`
 //   font-size: 14px;
 //   color: #dc2626;
-// `;
+// ;
 
 // export const Strong = styled.strong`
 //   cursor: pointer;

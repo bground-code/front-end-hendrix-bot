@@ -13,6 +13,7 @@ import {
   Typography,
   Alert,
 } from "@mui/joy";
+import AppBarLogin from "../../components/AppBar/AppBarLogin";
 
 function Login() {
   const navigate = useNavigate();
@@ -59,12 +60,13 @@ function Login() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        bgcolor: "neutral.900",
+        bgcolor: "#0B0D0E",
         height: "100vh",
       }}
     >
+      <AppBarLogin></AppBarLogin>
       <Box
-        bgcolor={"neutral.800"}
+        bgcolor={"#171A1C"}
         marginX={"auto"}
         width={"25%"}
         p={3}
