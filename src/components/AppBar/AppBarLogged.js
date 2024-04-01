@@ -82,7 +82,6 @@ function AppBar() {
             </MenuButton>
 
             <Menu>
-              <MenuItem>Perfil</MenuItem>
               <MenuItem>Configurações</MenuItem>
               <MenuItem>Sair</MenuItem>
             </Menu>

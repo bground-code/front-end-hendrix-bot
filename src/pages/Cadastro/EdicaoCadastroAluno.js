@@ -10,13 +10,14 @@ import {
   FormLabel,
   Stack,
   Typography,
+  Alert,
   Grid,
 } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBarLogged";
 import MapsUgcRoundedIcon from "@mui/icons-material/MapsUgcRounded";
 import SideMenu from "../../components/Menu/SideMenu";
 
-function CadastroAluno() {
+function EdicaoCadastroAluno() {
   return (
     <Container
       maxWidth={false}
@@ -32,7 +33,7 @@ function CadastroAluno() {
       }}
     >
       <AppBar></AppBar>
-      <SideMenu></SideMenu>  
+      <SideMenu></SideMenu>
       <Box
         bgcolor={"neutral.800"}
         marginX={"auto"}
@@ -43,7 +44,7 @@ function CadastroAluno() {
       >
         <Stack direction="column" spacing={1} mx={2}>
           <Typography level="h3" marginBottom={2}>
-            Cadastrar aluno:
+            Editar Cadastro - aluno (a):
           </Typography>
           <FormControl>
             <FormLabel required>Nome completo</FormLabel>
@@ -137,7 +138,7 @@ function CadastroAluno() {
           </Grid>
           <Stack direction="row" justifyContent="flex-end" alignItems="center">
             <Button variant="soft" color="danger">
-              Salvar
+              Editar
             </Button>
           </Stack>
         </Stack>
@@ -146,4 +147,4 @@ function CadastroAluno() {
   );
 }
 
-export default CadastroAluno;
+export default EdicaoCadastroAluno;

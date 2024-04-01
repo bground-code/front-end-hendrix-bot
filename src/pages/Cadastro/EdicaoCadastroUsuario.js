@@ -17,7 +17,7 @@ import {
 import AppBar from "../../components/AppBar/AppBarLogged";
 import SideMenu from "../../components/Menu/SideMenuAdmin";
 
-function CadastroUsuario() {
+function EdicaoCadastroUsuario() {
   const [tipoCadastro, setTipoCadastro] = useState("");
 
   const handleTipoCadastro = (e) => {
@@ -51,7 +51,7 @@ function CadastroUsuario() {
       >
         <Stack direction="column" spacing={1} mx={2}>
           <Typography level="h3" marginBottom={2}>
-            Cadastrar usuários:
+            Alterar Informações - usuários:
           </Typography>
           <FormControl>
             <FormLabel>Nome completo</FormLabel>
@@ -123,7 +123,7 @@ function CadastroUsuario() {
               </RadioGroup>
             </FormControl>
             <Button variant="soft" color="danger">
-              Salvar
+              Editar
             </Button>
           </Stack>
         </Stack>
@@ -132,4 +132,4 @@ function CadastroUsuario() {
   );
 }
 
-export default CadastroUsuario;
+export default EdicaoCadastroUsuario;
