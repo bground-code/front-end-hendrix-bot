@@ -6,7 +6,7 @@ import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
 function AppBar() {
   return (
     <Box
-      bgcolor={"#171AC"}
+      bgcolor={"#171A1C"}
       width={"100%"}
       p={1}
       top={0}
