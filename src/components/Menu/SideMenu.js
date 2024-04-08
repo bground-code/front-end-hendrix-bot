@@ -1,42 +1,31 @@
 import React from "react";
-import {
-  Box,
-  Stack,
-  Button,
-  Menu,
-  MenuItem,
-  List,
-  ListItem,
-  ListItemButton,
-  Divider,
-} from "@mui/joy";
+import { Box, Grid, Divider, ListItem } from "@mui/joy";
 
 function SideMenu() {
   return (
-    <Box bgcolor={"#32383E"} left={0} width={"20%"} p={2} minHeight="100%">
-      <Box mt={12}>
-        <List>
-          <ListItem sx={{ marginY: 1 }}>
-            <ListItemButton>Chat's</ListItemButton>
-          </ListItem>
+    <Box left={0} p={2} minHeight="100%" bgcolor={"#32383E"}>
+      <Grid container spacing={1} columnSpacing={1}>
+        <Grid item xs={12} mt={12}>
+          <ListItem sx={{ marginY: 1 }}>Chat's</ListItem>
           <Divider />
-          <ListItem sx={{ marginY: 1 }}>
-            <ListItemButton>Usuários</ListItemButton>
-          </ListItem>
+        </Grid>
+        <Grid item xs={12}>
+          <ListItem sx={{ marginY: 1 }}>Usuários</ListItem>
           <Divider />
-          <ListItem sx={{ marginY: 1 }}>
-            <ListItemButton>Gerenciar Hendrix</ListItemButton>
-          </ListItem>
+        </Grid>
+        <Grid item xs={12}>
+          <ListItem sx={{ marginY: 1 }}>Gerenciar Hendrix</ListItem>
           <Divider />
-          <ListItem sx={{ marginY: 1 }}>
-            <ListItemButton>Agenda</ListItemButton>
-          </ListItem>
+        </Grid>
+        <Grid item xs={12}>
+          <ListItem sx={{ marginY: 1 }}>Agenda</ListItem>
           <Divider />
-          <ListItem sx={{ marginY: 1 }}>
-            <ListItemButton>Relatórios</ListItemButton>
-          </ListItem>
-        </List>
-      </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <ListItem sx={{ marginY: 1 }}>Relatórios</ListItem>
+          <Divider />
+        </Grid>
+      </Grid>
     </Box>
   );
 }

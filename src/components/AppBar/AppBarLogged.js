@@ -32,7 +32,7 @@ function AppBar() {
     >
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
-          {/* <React.Fragment>
+          <React.Fragment>
             <IconButton variant="plain" onClick={() => setOpen(true)}>
               <MenuRoundedIcon />
             </IconButton>
@@ -48,23 +48,29 @@ function AppBar() {
             >
               <Box role="presentation" sx={{ p: 2 }}>
                 <List>
-                  {["Inbox", "Starred", "Send email", "Drafts"].map((text) => (
-                    <ListItem key={text}>
-                      <ListItemButton>{text}</ListItemButton>
-                    </ListItem>
-                  ))}
-                </List>
-                <Divider />
-                <List>
-                  {["All mail", "Trash", "Spam"].map((text) => (
-                    <ListItem key={text}>
-                      <ListItemButton>{text}</ListItemButton>
-                    </ListItem>
-                  ))}
+                  <ListItem sx={{ marginY: 1 }}>
+                    <ListItemButton>Chat's</ListItemButton>
+                  </ListItem>
+                  <Divider />
+                  <ListItem sx={{ marginY: 1 }}>
+                    <ListItemButton>Usuários</ListItemButton>
+                  </ListItem>
+                  <Divider />
+                  <ListItem sx={{ marginY: 1 }}>
+                    <ListItemButton>Gerenciar Hendrix</ListItemButton>
+                  </ListItem>
+                  <Divider />
+                  <ListItem sx={{ marginY: 1 }}>
+                    <ListItemButton>Agenda</ListItemButton>
+                  </ListItem>
+                  <Divider />
+                  <ListItem sx={{ marginY: 1 }}>
+                    <ListItemButton>Relatórios</ListItemButton>
+                  </ListItem>
                 </List>
               </Box>
             </Drawer>
-          </React.Fragment> */}
+          </React.Fragment>
 
           <Stack direction="row" alignItems="center">
             <IconButton disabled>

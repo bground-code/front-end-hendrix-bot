@@ -24,7 +24,7 @@ function AppBarLogin() {
         <Typography>Hendrix-Bot</Typography>
       </Stack>
       <Stack direction="row" alignItems="center" px={2}>
-        <Button color="neutral" variant="plain">
+        <Button variant="plain" color="neutral">
           Voltar
         </Button>
       </Stack>

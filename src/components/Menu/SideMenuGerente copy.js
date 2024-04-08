@@ -13,7 +13,7 @@ import {
 
 function SideMenuGerente() {
   return (
-    <Box bgcolor={"neutral.700"} left={0} width={"20%"} p={2} minHeight="100%">
+    <Box left={0} width={"20%"} p={2} minHeight="100%" bgcolor={"neutral.700"}>
       <Box mt={12}>
         <List>
           <ListItem sx={{ marginY: 1 }}>
