@@ -7,6 +7,7 @@ import {
   Stack,
   LinearProgress,
   Typography,
+  Textarea,
 } from "@mui/joy";
 import SendRoundedIcon from "@mui/icons-material/SendRounded";
 
@@ -71,14 +72,16 @@ const Chat = () => {
       borderRadius={8}
       p={2}
       sx={{
-        bgcolor: "#636B74",
+        bgcolor: "#32383E",
+        width: "70%",
       }}
       mt={6}
     >
       <Stack
         className="chat-messages"
         maxHeight={400}
-        minHeight={200}
+        minHeight={400}
+        spacing={1}
         sx={{
           flexGrow: 1,
           overflowY: "auto",
@@ -88,33 +91,57 @@ const Chat = () => {
         {messages.map((msg, index) => (
           <Box key={index} className={`message ${msg.type}`}>
             <Typography>
-              <Typography
-                textAlign={"right"}
-                variant="soft"
-                bgcolor={"neutral.700"}
-              >
-                {msg.message}
-              </Typography>
+              {msg.type === "sent" ? (
+                <Typography
+                  textAlign="right"
+                  variant="soft"
+                  bgcolor="#171A1C"
+                  className="sent"
+                  px={1}
+                  py={0.5}
+                >
+                  {msg.message}
+                </Typography>
+              ) : (
+                <Typography
+                  textAlign="left"
+                  variant="soft"
+                  bgcolor="#7D1212"
+                  className="received"
+                  px={1}
+                  py={0.5}
+                >
+                  {msg.message}
+                </Typography>
+              )}
             </Typography>
           </Box>
         ))}
         {isTyping && (
-          <div className="message received">
-            {/* <span className="message-content">...</span> */}
+          <Box width="90%">
             <LinearProgress color="neutral" variant="plain" />
-          </div>
-        )}{" "}
-        {/* Exibe "..." quando o chatbot está digitando */}
+          </Box>
+        )}
       </Stack>
-      <Stack direction="row" spacing={2} pt={1}>
-        <Input
+      <Stack
+        direction="row"
+        spacing={2}
+        pt={1}
+        alignItems="flex-end"
+        justifyContent="flex-end"
+        sx={{ flexGrow: 1 }}
+      >
+        <Textarea
           type="text"
           value={inputMessage}
           variant="soft"
           onChange={(e) => setInputMessage(e.target.value)}
           placeholder="Digite sua pergunta..."
+          minRows={2}
+          sx={{ mb: 1, width: "90%" }}
         />
-        <Button variant="soft" color="danger" onClick={sendMessage}>
+
+        <Button onClick={sendMessage} variant="soft" color="danger">
           <SendRoundedIcon />
         </Button>
       </Stack>

@@ -22,7 +22,7 @@ function CadastrarAluno() {
       }}
     >
       <AppBar></AppBar>
-      <Box width="80%" mt={6}>
+      <Box width="80%" mt={{ xs: 12, sm: 6, md: 6 }}>
         <CreateAluno></CreateAluno>
       </Box>
     </Container>

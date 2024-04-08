@@ -53,6 +53,7 @@ function CreateAluno() {
       }}
       columnSpacing={3}
       rowSpacing={1}
+      minHeight={470}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Typography level="h3">Cadastrar aluno:</Typography>
