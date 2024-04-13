@@ -6,6 +6,9 @@ import Home from "../pages/home/Home";
 import Login from "../pages/Login/Login";
 import CadastrarUsuario from "../pages/cadastrar/CadastrarUsuario";
 import CadastrarAluno from "../pages/cadastrar/CadastrarAluno";
+import EditarAluno from "../pages/cadastrar/EditarAluno";
+import EditarUsuario from "../pages/cadastrar/EditarUsuario";
+import GerenciarIntents from "../pages/gerenciar/GerenciarIntents";
 
 // const Private = ({ Item }) => {
 //   const { signed } = useAuth();
@@ -27,6 +30,9 @@ const RoutesApp = () => {
             element={<CadastrarUsuario />}
           />
           <Route exact path="/cadastrar-aluno" element={<CadastrarAluno />} />
+          <Route exact path="/editar-aluno" element={<EditarAluno />} />
+          <Route exact path="/editar-usuario" element={<EditarUsuario />} />
+          <Route exact path="/intents" element={<GerenciarIntents />} />
         </Routes>
       </Fragment>
     </BrowserRouter>

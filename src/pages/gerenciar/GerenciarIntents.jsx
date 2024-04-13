@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Chat from "../../chat/Chat";
-import { Container } from "@mui/joy";
-
-import AppBar from "../../components/AppBar/AppBar";
+import { Container, Grid } from "@mui/joy";
+import AppBar from "../../components/AppBar/AppBarLogged";
+import SideMenuGerenciar from "../../components/Menu/SideMenuIntents";
 
 function Home() {
   return (
@@ -19,8 +18,12 @@ function Home() {
         height: "100vh",
       }}
     >
-      <AppBar showMenuButton={false}></AppBar>
-      <Chat></Chat>
+      <AppBar />
+      <Grid container>
+        <Grid item>
+          <SideMenuGerenciar />
+        </Grid>
+      </Grid>
     </Container>
   );
 }

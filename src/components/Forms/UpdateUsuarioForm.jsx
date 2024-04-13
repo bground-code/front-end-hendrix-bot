@@ -1,92 +1,117 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import {
-  Container,
-  Box,
+  Grid,
   Input,
   Button,
   FormControl,
   FormLabel,
   Stack,
   Typography,
-  Alert,
   RadioGroup,
   Radio,
 } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged";
-import SideMenu from "../../components/Menu/SideMenuAdmin";
 
-function EdicaoCadastroUsuario() {
+function UpdateUsuario() {
   const [tipoCadastro, setTipoCadastro] = useState("");
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+
+  const handleNomeChange = (e) => {
+    setNome(e.target.value);
+  };
+
+  const handleCpfChange = (e) => {
+    setCpf(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSenhaChange = (e) => {
+    setSenha(e.target.value);
+  };
+
+  const handleConfirmarSenhaChange = (e) => {
+    setConfirmarSenha(e.target.value);
+  };
 
   const handleTipoCadastro = (e) => {
     setTipoCadastro(e.target.value);
   };
+
+  const handleSalvar = () => {
+    console.log("Nome:", nome);
+    console.log("CPF:", cpf);
+    console.log("E-mail:", email);
+    console.log("Senha:", senha);
+    console.log("Confirmar senha:", confirmarSenha);
+    console.log("Tipo de cadastro:", tipoCadastro);
+  };
+
   return (
-    <Container
-      maxWidth={false}
-      disableGutters
-      component="main"
-      role="main"
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      p={2}
+      borderRadius={8}
+      mt={6}
+      mb={2}
       sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        bgcolor: "#0B0D0E",
-        height: "100vh",
-        maxHeight: "100vh",
+        bgcolor: "#171A1C",
       }}
     >
-      <AppBar></AppBar>
-      <SideMenu></SideMenu>
-      <Box
-        bgcolor={"#171A1C"}
-        marginX={"auto"}
-        // marginY={"auto"}
-        width={"75%"}
-        p={2}
-        borderRadius={8}
-        mt={6}
-      >
+      <Grid item xs={12} sm={12} md={12} lg={12}>
         <Stack direction="column" spacing={1} mx={2}>
           <Typography level="h3" marginBottom={2}>
-            Alterar Informações - usuários:
+            Cadastrar usuário:
           </Typography>
           <FormControl>
             <FormLabel>Nome completo</FormLabel>
             <Input
-              placeholder="Digite o nome do usuário"
+              placeholder="Digite seu nome"
               size="md"
               variant="plain"
               type="text"
+              value={nome}
+              onChange={handleNomeChange}
             />
           </FormControl>
           <FormControl>
             <FormLabel>CPF</FormLabel>
             <Input
-              placeholder="Digite o CPF do usuario"
+              placeholder="Digite seu CPF"
               size="md"
               variant="plain"
               type="text"
+              value={cpf}
+              onChange={handleCpfChange}
             />
           </FormControl>
           <FormControl>
             <FormLabel>E-mail</FormLabel>
             <Input
-              placeholder="Digite o e-mail"
+              placeholder="Digite seu e-mail"
               size="md"
               variant="plain"
               type="email"
+              value={email}
+              onChange={handleEmailChange}
             />
           </FormControl>
           <FormControl>
             <FormLabel>Senha</FormLabel>
             <Input
-              placeholder="Digite a senha"
+              placeholder="Digite sua senha"
               size="md"
               variant="plain"
               type="password"
+              value={senha}
+              onChange={handleSenhaChange}
             />
           </FormControl>
           <FormControl>
@@ -96,6 +121,8 @@ function EdicaoCadastroUsuario() {
               size="md"
               variant="plain"
               type="password"
+              value={confirmarSenha}
+              onChange={handleConfirmarSenhaChange}
             />
           </FormControl>
           <Stack
@@ -105,7 +132,11 @@ function EdicaoCadastroUsuario() {
           >
             <FormControl>
               <FormLabel>Tipo de usuário:</FormLabel>
-              <RadioGroup onChange={handleTipoCadastro} defaultValue="admin">
+              <RadioGroup
+                onChange={handleTipoCadastro}
+                value={tipoCadastro}
+                defaultValue="admin"
+              >
                 <Stack direction="row" spacing={2}>
                   <Radio
                     label="Administrador"
@@ -122,14 +153,14 @@ function EdicaoCadastroUsuario() {
                 </Stack>
               </RadioGroup>
             </FormControl>
-            <Button variant="soft" color="danger">
-              Editar
+            <Button variant="soft" color="danger" onClick={handleSalvar}>
+              Salvar
             </Button>
           </Stack>
         </Stack>
-      </Box>
-    </Container>
+      </Grid>
+    </Grid>
   );
 }
 
-export default EdicaoCadastroUsuario;
+export default UpdateUsuario;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 import { Container, Stack, Box } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBarLogged.js";
-import CreateAluno from "../../components/Forms/CreateAluno.jsx";
+import CreateAluno from "../../components/Forms/CreateAlunoForm.jsx";
 
 function CadastrarAluno() {
   return (

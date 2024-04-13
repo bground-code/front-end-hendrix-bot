@@ -11,13 +11,12 @@ import {
   Stack,
   Typography,
   Alert,
-  RadioGroup,
-  Radio,
+  Grid,
 } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBarLogged";
-import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
+import UpdateAluno from "../../components/Forms/UpdateAlunoForm";
 
-function CadastrarUsuario() {
+function EditarAluno() {
   return (
     <Container
       maxWidth={false}
@@ -34,10 +33,10 @@ function CadastrarUsuario() {
     >
       <AppBar></AppBar>
       <Box width={"80%"} mt={6}>
-        <CreateUsuario></CreateUsuario>
+        <UpdateAluno></UpdateAluno>
       </Box>
     </Container>
   );
 }
 
-export default CadastrarUsuario;
+export default EditarAluno;

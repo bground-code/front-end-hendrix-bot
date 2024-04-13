@@ -1,23 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import {
-  Container,
-  Box,
-  Input,
-  Button,
-  FormControl,
-  FormLabel,
-  Stack,
-  Typography,
-  Alert,
-  RadioGroup,
-  Radio,
-} from "@mui/joy";
+import { Container, Box } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBarLogged";
-import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
+import UpdateUsuario from "../../components/Forms/UpdateUsuarioForm";
 
-function CadastrarUsuario() {
+function EditarUsuario() {
+  const [tipoCadastro, setTipoCadastro] = useState("");
+
+  const handleTipoCadastro = (e) => {
+    setTipoCadastro(e.target.value);
+  };
   return (
     <Container
       maxWidth={false}
@@ -34,10 +27,10 @@ function CadastrarUsuario() {
     >
       <AppBar></AppBar>
       <Box width={"80%"} mt={6}>
-        <CreateUsuario></CreateUsuario>
+        <UpdateUsuario></UpdateUsuario>
       </Box>
     </Container>
   );
 }
 
-export default CadastrarUsuario;
+export default EditarUsuario;
