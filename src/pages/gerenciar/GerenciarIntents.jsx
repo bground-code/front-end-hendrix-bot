@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Grid } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged";
+import AppBar from "../../components/AppBar/AppBar";
 import SideMenuGerenciar from "../../components/Menu/SideMenuIntents";
 
 function Home() {
@@ -18,7 +18,7 @@ function Home() {
         height: "100vh",
       }}
     >
-      <AppBar />
+      <AppBar showMenuButton={true} buttonType="menu" />
       <Grid container>
         <Grid item>
           <SideMenuGerenciar />

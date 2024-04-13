@@ -13,7 +13,7 @@ import {
   Typography,
   Alert,
 } from "@mui/joy";
-import AppBarLogin from "../../components/AppBar/AppBarLogin";
+import AppBar from "../../components/AppBar/AppBar";
 
 function Login() {
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ function Login() {
         height: "100vh",
       }}
     >
-      <AppBarLogin></AppBarLogin>
+      <AppBar showMenuButton={false} buttonType="voltar"></AppBar>
       <Box
         bgcolor={"#171A1C"}
         marginX={"auto"}

@@ -13,7 +13,7 @@ import {
   Alert,
   Grid,
 } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged";
+import AppBar from "../../components/AppBar/AppBar";
 import UpdateAluno from "../../components/Forms/UpdateAlunoForm";
 
 function EditarAluno() {
@@ -31,7 +31,7 @@ function EditarAluno() {
         minHeight: "100vh",
       }}
     >
-      <AppBar></AppBar>
+      <AppBar showMenuButton={true} buttonType="menu" />
       <Box width={"80%"} mt={6}>
         <UpdateAluno></UpdateAluno>
       </Box>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Container, Box } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged";
+import AppBar from "../../components/AppBar/AppBar";
 import UpdateUsuario from "../../components/Forms/UpdateUsuarioForm";
 
 function EditarUsuario() {
@@ -25,7 +25,7 @@ function EditarUsuario() {
         minHeight: "100vh",
       }}
     >
-      <AppBar></AppBar>
+      <AppBar showMenuButton={true} buttonType="menu" />
       <Box width={"80%"} mt={6}>
         <UpdateUsuario></UpdateUsuario>
       </Box>

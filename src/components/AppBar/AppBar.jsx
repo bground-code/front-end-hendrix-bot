@@ -14,17 +14,17 @@ function AppBar({ showMenuButton, buttonType }) {
     } else if (buttonType === "voltar") navigate("/home");
   };
 
-  const getButtonIcon = () => {
+  const getButton = () => {
     if (buttonType === "login") {
       return (
-        <Button variant="plain" color="neutral">
+        <Button variant="plain" color="neutral" onClick={handleButtonClick}>
           Login
         </Button>
       );
     } else if (buttonType === "voltar") {
       return (
-        <Button variant="plain" color="neutral">
-          Login
+        <Button variant="plain" color="neutral" onClick={handleButtonClick}>
+          Voltar
         </Button>
       );
     } else if (buttonType === "menu") {
@@ -53,7 +53,9 @@ function AppBar({ showMenuButton, buttonType }) {
         </IconButton>
         <Typography>Hendrix-Bot</Typography>
       </Stack>
-      <Stack direction="row" alignItems="center" px={2}></Stack>
+      <Stack direction="row" alignItems="center" px={2}>
+        {getButton()}
+      </Stack>
     </Box>
   );
 }

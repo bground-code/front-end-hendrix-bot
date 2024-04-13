@@ -19,7 +19,7 @@ function Home() {
         height: "100vh",
       }}
     >
-      <AppBar showMenuButton={false}></AppBar>
+      <AppBar showMenuButton={false} buttonType="login"></AppBar>
       <Chat></Chat>
     </Container>
   );

@@ -14,7 +14,7 @@ import {
   RadioGroup,
   Radio,
 } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged";
+import AppBar from "../../components/AppBar/AppBar";
 import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
 
 function CadastrarUsuario() {
@@ -32,7 +32,7 @@ function CadastrarUsuario() {
         minHeight: "100vh",
       }}
     >
-      <AppBar></AppBar>
+      <AppBar showMenuButton={true} buttonType="menu" />
       <Box width={"80%"} mt={6}>
         <CreateUsuario></CreateUsuario>
       </Box>

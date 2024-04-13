@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 import { Container, Stack, Box } from "@mui/joy";
-import AppBar from "../../components/AppBar/AppBarLogged.js";
+import AppBar from "../../components/AppBar/AppBar";
 import CreateAluno from "../../components/Forms/CreateAlunoForm.jsx";
 
 function CadastrarAluno() {
@@ -21,7 +21,7 @@ function CadastrarAluno() {
         minHeight: "100vh",
       }}
     >
-      <AppBar></AppBar>
+      <AppBar showMenuButton={true} buttonType="menu" />
       <Box width="80%" mt={{ xs: 12, sm: 6, md: 6 }}>
         <CreateAluno></CreateAluno>
       </Box>
