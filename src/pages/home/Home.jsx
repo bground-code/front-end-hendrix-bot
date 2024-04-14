@@ -3,6 +3,7 @@ import Chat from "../../chat/Chat";
 import { Container } from "@mui/joy";
 
 import AppBar from "../../components/AppBar/AppBar";
+const userLogado = localStorage.getItem("userLogado");
 
 function Home() {
   return (
@@ -19,7 +20,11 @@ function Home() {
         height: "100vh",
       }}
     >
-      <AppBar showMenuButton={true} buttonType="menu"></AppBar>
+      {userLogado ? (
+        <AppBar showMenuButton={true} buttonType="sair" />
+      ) : (
+        <AppBar showMenuButton={false} buttonType="login" />
+      )}
       <Chat></Chat>
     </Container>
   );

@@ -14,6 +14,8 @@ import {
   Alert,
 } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
+import axios from "axios";
+import httpClient from "../../services/interceptor";
 
 function Login() {
   const navigate = useNavigate();
@@ -34,11 +36,11 @@ function Login() {
       });
 
       if (response.ok) {
-        navigate("/home");
         const data = await response.json();
-        if (data.tokenDto && data.tokenDto.acessToken) {
-          const token = data.tokenDto.acessToken;
+        if (data.tokenDto && data.tokenDto.accessToken) {
+          const token = data.tokenDto.accessToken;
           localStorage.setItem("accessToken", token);
+          navigate("/home");
         }
       } else {
         const data = await response.json();
@@ -49,6 +51,39 @@ function Login() {
       setError("Erro ao fazer login. Por favor, tente novamente mais tarde.");
     }
   };
+
+  // const handleLogin = async (login, senha) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:8081/auth/login",
+  //       {
+  //         login: login,
+  //         senha: senha,
+  //       },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+
+  //     if (response.status === 200) {
+  //       navigate("/home");
+  //       const data = response.data;
+  //       if (data.tokenDto && data.tokenDto.acessToken) {
+  //         const token = data.tokenDto.acessToken;
+  //         localStorage.setItem("accessToken", token);
+  //         console.log(token);
+  //       }
+  //     } else {
+  //       const data = response.data;
+  //       setError(data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error occurred during login:", error);
+  //     setError("Erro ao fazer login. Por favor, tente novamente mais tarde.");
+  //   }
+  // };
 
   return (
     <Container

@@ -1,12 +1,10 @@
-// httpClient.js
 import axios from "axios";
 
 const httpClient = axios.create();
 
-// Add a request interceptor
 httpClient.interceptors.request.use(
   function (config) {
-    const userLogado = sessionStorage.getItem("userLogado");
+    const userLogado = localStorage.getItem("userLogado");
     if (userLogado) {
       const data = JSON.parse(window.atob(userLogado));
       if (data?.token?.accessToken) {

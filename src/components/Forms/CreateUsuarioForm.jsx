@@ -9,6 +9,7 @@ import {
   Typography,
   RadioGroup,
   Radio,
+  FormHelperText,
 } from "@mui/joy";
 
 function CreateUsuario() {
@@ -19,6 +20,8 @@ function CreateUsuario() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleNomeChange = (e) => {
     setNome(e.target.value);
@@ -37,23 +40,28 @@ function CreateUsuario() {
 
   const handleSenhaChange = (e) => {
     setSenha(e.target.value);
+    setError(false);
   };
 
   const handleConfirmarSenhaChange = (e) => {
     setConfirmarSenha(e.target.value);
+    setError(false);
   };
 
   const handleTipoCadastro = (e) => {
     setTipoCadastro(e.target.value);
   };
 
+  const confirmarSenhaEqual = () => {
+    return senha === confirmarSenha;
+  };
+
   const handleSalvar = () => {
-    console.log("Nome:", nome);
-    console.log("CPF:", cpf);
-    console.log("E-mail:", email);
-    console.log("Senha:", senha);
-    console.log("Confirmar senha:", confirmarSenha);
-    console.log("Tipo de cadastro:", tipoCadastro);
+    if (!confirmarSenhaEqual()) {
+      setError(true);
+      setErrorMessage("As senhas não coincidem!");
+      return;
+    }
   };
 
   return (
@@ -63,7 +71,7 @@ function CreateUsuario() {
       alignItems="center"
       p={2}
       borderRadius={8}
-      mt={6}
+      mt={{ xs: 3 }}
       mb={2}
       sx={{
         bgcolor: "#171A1C",
@@ -112,7 +120,7 @@ function CreateUsuario() {
             variant="plain"
             type="text"
             value={contatoWpp}
-            onChange={handleCpfChange}
+            onChange={handleContatoWpp}
           />
         </FormControl>
       </Grid>
@@ -140,11 +148,13 @@ function CreateUsuario() {
             value={senha}
             onChange={handleSenhaChange}
           />
+          {error && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={6}>
         <FormControl>
           <FormLabel required>Confirme a senha</FormLabel>
+
           <Input
             placeholder="Confirme sua senha"
             size="md"
@@ -153,6 +163,7 @@ function CreateUsuario() {
             value={confirmarSenha}
             onChange={handleConfirmarSenhaChange}
           />
+          {error && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={10} md={10} lg={11}>
@@ -163,7 +174,7 @@ function CreateUsuario() {
             value={tipoCadastro}
             defaultValue="admin"
           >
-            <Stack direction="row" spacing={2}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
               <Radio
                 label="Administrador(a)"
                 variant="soft"
