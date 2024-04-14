@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import {
-  Container,
-  Box,
-  Input,
-  Button,
-  FormControl,
-  FormLabel,
-  Stack,
-  Typography,
-  Alert,
-  RadioGroup,
-  Radio,
-} from "@mui/joy";
+import { Container, Box } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
 import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
 
 function CadastrarUsuario() {
+  const [tipoUsuario, setTipoUsuario] = useState("");
+
   return (
     <Container
       maxWidth={false}

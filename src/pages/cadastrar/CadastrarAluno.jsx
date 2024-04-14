@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth.js";
 import { Container, Stack, Box } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
 import CreateAluno from "../../components/Forms/CreateAlunoForm.jsx";
+import CreateUsuario from "../../components/Forms/CreateUsuarioForm.jsx";
 
 function CadastrarAluno() {
   return (

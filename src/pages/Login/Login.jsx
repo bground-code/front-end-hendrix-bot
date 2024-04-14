@@ -17,7 +17,7 @@ import AppBar from "../../components/AppBar/AppBar";
 
 function Login() {
   const navigate = useNavigate();
-  const { signin } = useAuth();
+  // const { signin } = useAuth();
 
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
@@ -53,6 +53,7 @@ function Login() {
   return (
     <Container
       maxWidth={false}
+      width="100%"
       disableGutters
       component="main"
       role="main"
@@ -68,7 +69,7 @@ function Login() {
       <Box
         bgcolor={"#171A1C"}
         marginX={"auto"}
-        width={"25%"}
+        minWidth={{ xs: "70%", sm: "60%", md: "50%", lg: "30%" }}
         p={3}
         borderRadius={8}
       >
