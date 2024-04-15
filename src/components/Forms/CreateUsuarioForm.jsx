@@ -78,7 +78,9 @@ function CreateUsuario() {
       }}
       columnSpacing={3}
       rowSpacing={1}
-      minHeight={470}
+      minHeight={500}
+      width={{ xs: 300, sm: 500, md: 710, lg: 900, xl: 1300 }}
+      left={0}
     >
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <Typography level="h3" marginBottom={2}>
@@ -166,7 +168,7 @@ function CreateUsuario() {
           {error && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={10} md={10} lg={11}>
+      <Grid item xs={12} sm={10} md={10} lg={10}>
         <FormControl>
           <FormLabel required>Tipo de usuário:</FormLabel>
           <RadioGroup
@@ -197,7 +199,7 @@ function CreateUsuario() {
           </RadioGroup>
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={1} md={1} lg={1} alignSelf="flex-end">
+      <Grid item xs={12} sm={1} md={1} lg={1} mr={{ md: 5, lg: 2, xl: 0 }}>
         <Button variant="soft" color="danger" onClick={handleSalvar}>
           Salvar
         </Button>

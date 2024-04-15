@@ -1,7 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import Home from "../pages/home/Home";
 import Login from "../pages/Login/Login";
 import CadastrarUsuario from "../pages/cadastrar/CadastrarUsuario";
@@ -9,12 +8,6 @@ import CadastrarAluno from "../pages/cadastrar/CadastrarAluno";
 import EditarAluno from "../pages/cadastrar/EditarAluno";
 import EditarUsuario from "../pages/cadastrar/EditarUsuario";
 import GerenciarIntents from "../pages/gerenciar/GerenciarIntents";
-
-// const Private = ({ Item }) => {
-//   const { signed } = useAuth();
-
-//   return signed > 0 ? <Item /> : <Signin />;
-// };
 
 const RoutesApp = () => {
   return (
