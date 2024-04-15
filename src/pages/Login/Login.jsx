@@ -38,11 +38,10 @@ function Login() {
         const data = await response.json();
         if (data.tokenDto && data.tokenDto.accessToken) {
           const token = data.tokenDto.accessToken;
+          const papelUsuario = data.tokenDto.roles;
           localStorage.setItem("accessToken", token);
+          localStorage.setItem("userRole", papelUsuario);
         }
-      } else {
-        const data = await response.json();
-        setError(data.message);
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
