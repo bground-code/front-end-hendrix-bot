@@ -18,8 +18,7 @@ const RoutesApp = () => {
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route
-            exact
-            path="/cadastrar-usuario"
+            exact path="/cadastrar"
             element={<CadastrarUsuario />}
           />
           <Route exact path="/cadastrar-aluno" element={<CadastrarAluno />} />

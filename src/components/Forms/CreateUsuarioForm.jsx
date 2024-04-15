@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import addTokenToHeaders from "../../routes/tokenInterceptor";
+
 import {
   Grid,
   Input,
@@ -56,11 +59,32 @@ function CreateUsuario() {
     return senha === confirmarSenha;
   };
 
-  const handleSalvar = () => {
+  const handleSalvar = async () => {
     if (!confirmarSenhaEqual()) {
       setError(true);
       setErrorMessage("As senhas não coincidem!");
       return;
+    }
+    const axiosInstance = axios.create({
+      baseURL: "http://localhost:8081/auth",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    
+    const response = await axiosInstance.post("/cadastrar", {
+      nome: nome,
+      cpf: cpf,
+      email: email,
+      senha: senha,
+      contatoWpp: contatoWpp,
+      papelUsuario: tipoCadastro,
+    });
+    
+    if (response.ok) {
+      console.log("Cadastro realizado com sucesso!");
+    } else {
+      console.error("Erro ao fazer o cadastro:", "erro");
     }
   };
 
@@ -180,19 +204,19 @@ function CreateUsuario() {
               <Radio
                 label="Administrador(a)"
                 variant="soft"
-                value="admin"
+                value="ADMIN"
                 color="danger"
               />
               <Radio
                 label="Gerente"
                 variant="soft"
-                value="gerente"
+                value="GERENTE"
                 color="danger"
               />
               <Radio
                 label="Aluno(a)"
                 variant="soft"
-                value="aluno"
+                value="ALUNO"
                 color="danger"
               />
             </Stack>
