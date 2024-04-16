@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import addTokenToHeaders from "../../routes/tokenInterceptor";
-
+import InfoIcon from "@mui/icons-material/Info";
 import {
   Grid,
   Input,
@@ -13,6 +12,7 @@ import {
   RadioGroup,
   Radio,
   FormHelperText,
+  Alert,
 } from "@mui/joy";
 import { LocalGasStationRounded, Token } from "@mui/icons-material";
 
@@ -25,6 +25,7 @@ function CreateUsuario() {
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [error, setError] = useState(false);
+  const [sucesso, setSucesso] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleNomeChange = (e) => {
@@ -66,7 +67,7 @@ function CreateUsuario() {
       "Content-Type": "application/json",
     },
   });
-  
+
   axiosInstance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("accessToken");
@@ -79,16 +80,16 @@ function CreateUsuario() {
       return Promise.reject(error);
     }
   );
-  
+
   const handleSalvar = async () => {
     console.log(localStorage.getItem("accessToken"));
-  
+
     if (!confirmarSenhaEqual()) {
       setError(true);
       setErrorMessage("As senhas não coincidem!");
       return;
     }
-  
+
     try {
       const response = await axiosInstance.post("/cadastrar", {
         nome: nome,
@@ -101,6 +102,7 @@ function CreateUsuario() {
 
       if (response.ok) {
         console.log("Cadastro realizado com sucesso!");
+        setSucesso(true);
       } else {
         console.error("Erro ao fazer o cadastro:");
       }
@@ -127,13 +129,8 @@ function CreateUsuario() {
       width={{ xs: 300, sm: 500, md: 710, lg: 900, xl: 1300 }}
       left={0}
     >
-      <Grid item xs={12} sm={12} md={12} lg={12}>
-        <Typography level="h3" marginBottom={2}>
-          Cadastrar usuário:
-        </Typography>
-      </Grid>
       <Grid item xs={12} sm={6} md={6} lg={12}>
-      <Stack
+        <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -141,7 +138,7 @@ function CreateUsuario() {
           <Typography level="h3" marginBottom={2}>
             Cadastrar usuário:
           </Typography>
-          {success && (
+          {sucesso && (
             <Alert color="success" startIcon={<InfoIcon />}>
               Usuário cadastrado com sucesso!
             </Alert>
