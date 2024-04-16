@@ -61,7 +61,7 @@ function CreateUsuario() {
   };
 
   const axiosInstance = axios.create({
-    baseURL: "http://localhost:8081/auth/",
+    baseURL: "http://localhost:8081/",
     headers: {
       "Content-Type": "application/json",
     },
@@ -131,6 +131,20 @@ function CreateUsuario() {
         </Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={12}>
+      <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Typography level="h3" marginBottom={2}>
+            Cadastrar usuário:
+          </Typography>
+          {success && (
+            <Alert color="success" startIcon={<InfoIcon />}>
+              Usuário cadastrado com sucesso!
+            </Alert>
+          )}
+        </Stack>
         <FormControl>
           <FormLabel required>Nome completo</FormLabel>
           <Input
