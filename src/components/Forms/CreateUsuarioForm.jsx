@@ -14,6 +14,7 @@ import {
   Radio,
   FormHelperText,
 } from "@mui/joy";
+import { LocalGasStationRounded, Token } from "@mui/icons-material";
 
 function CreateUsuario() {
   const [tipoCadastro, setTipoCadastro] = useState("");
@@ -59,32 +60,52 @@ function CreateUsuario() {
     return senha === confirmarSenha;
   };
 
+  const axiosInstance = axios.create({
+    baseURL: "http://localhost:8081/",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem("accessToken");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+  
   const handleSalvar = async () => {
+    console.log(localStorage.getItem("accessToken"));
+  
     if (!confirmarSenhaEqual()) {
       setError(true);
       setErrorMessage("As senhas não coincidem!");
       return;
     }
-    const axiosInstance = axios.create({
-      baseURL: "http://localhost:8081/auth",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    
-    const response = await axiosInstance.post("/cadastrar", {
-      nome: nome,
-      cpf: cpf,
-      email: email,
-      senha: senha,
-      contatoWpp: contatoWpp,
-      papelUsuario: tipoCadastro,
-    });
-    
-    if (response.ok) {
-      console.log("Cadastro realizado com sucesso!");
-    } else {
-      console.error("Erro ao fazer o cadastro:", "erro");
+  
+    try {
+      const response = await axiosInstance.post("/cadastrar", {
+        nome: nome,
+        cpf: cpf,
+        email: email,
+        senha: senha,
+        contatoWpp: contatoWpp,
+        papelUsuario: tipoCadastro,
+      });
+
+      if (response.ok) {
+        console.log("Cadastro realizado com sucesso!");
+      } else {
+        console.error("Erro ao fazer o cadastro:");
+      }
+    } catch (error) {
+      console.error("Erro ao fazer o cadastro:");
     }
   };
 
@@ -112,6 +133,20 @@ function CreateUsuario() {
         </Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={12}>
+      <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Typography level="h3" marginBottom={2}>
+            Cadastrar usuário:
+          </Typography>
+          {success && (
+            <Alert color="success" startIcon={<InfoIcon />}>
+              Usuário cadastrado com sucesso!
+            </Alert>
+          )}
+        </Stack>
         <FormControl>
           <FormLabel required>Nome completo</FormLabel>
           <Input
