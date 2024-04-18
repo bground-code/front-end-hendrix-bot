@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Grid,
@@ -15,8 +15,13 @@ import RateReviewRoundedIcon from "@mui/icons-material/RateReviewRounded";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
 import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 import { Margin } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function SideMenu() {
+  const navigate = useNavigate();
+  const handleNavigate = (page) => {
+    navigate(`/${page}`);
+  };
   return (
     <Box
       left={0}
@@ -28,7 +33,7 @@ function SideMenu() {
     >
       <List sx={{ position: "fixed" }}>
         <ListItem sx={{ mb: 2 }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => handleNavigate("home")}>
             <ListItemDecorator>
               <ForumRoundedIcon />
             </ListItemDecorator>
@@ -38,7 +43,7 @@ function SideMenu() {
           </ListItemButton>
         </ListItem>
         <ListItem sx={{ mb: 2 }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => handleNavigate("buscar-usuarios")}>
             <ListItemDecorator>
               <GroupRoundedIcon />
             </ListItemDecorator>
@@ -48,7 +53,7 @@ function SideMenu() {
           </ListItemButton>
         </ListItem>
         <ListItem sx={{ mb: 2 }}>
-          <ListItemButton>
+          <ListItemButton onClick={() => handleNavigate("intents")}>
             <ListItemDecorator>
               <RateReviewRoundedIcon />
             </ListItemDecorator>
@@ -58,7 +63,7 @@ function SideMenu() {
             </ListItemContent>
           </ListItemButton>
         </ListItem>
-        <ListItem sx={{ mb: 2 }}>
+        {/* <ListItem sx={{ mb: 2 }}>
           <ListItemButton>
             <ListItemDecorator>
               <EventRoundedIcon />
@@ -77,7 +82,7 @@ function SideMenu() {
               Relatório
             </ListItemContent>
           </ListItemButton>
-        </ListItem>
+        </ListItem> */}
       </List>
     </Box>
   );
