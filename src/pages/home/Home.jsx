@@ -3,9 +3,20 @@ import Chat from "../../chat/Chat";
 import { Container } from "@mui/joy";
 
 import AppBar from "../../components/AppBar/AppBar";
-const userLogado = localStorage.getItem("userLogado");
+
 
 function Home() {
+  const token = sessionStorage.getItem("token");
+  var tokenPresente;
+  console.log(token);
+
+  if (token !== undefined && token !== null && token.length > 0) {
+    tokenPresente = true;
+    console.log("tem token", typeof(tokenPresente));
+  } else {
+    tokenPresente = false;
+    console.log("nop ");
+  }
   return (
     <Container
       maxWidth={false}
@@ -20,7 +31,7 @@ function Home() {
         height: "100vh",
       }}
     >
-      {userLogado ? (
+      {tokenPresente ? (
         <AppBar showMenuButton={true} buttonType="sair" />
       ) : (
         <AppBar showMenuButton={false} buttonType="login" />

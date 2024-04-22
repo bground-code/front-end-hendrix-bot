@@ -34,13 +34,13 @@ function Login() {
       });
 
       if (response.ok) {
-        navigate("/home");
         const data = await response.json();
         if (data.tokenDto && data.tokenDto.accessToken) {
           const token = data.tokenDto.accessToken;
           const papelUsuario = data.tokenDto.roles;
-          localStorage.setItem("accessToken", token);
-          localStorage.setItem("userRole", papelUsuario);
+          sessionStorage.setItem("token", token);
+          sessionStorage.setItem("userRole", papelUsuario);
+          navigate("/home");
         }
       }
     } catch (error) {
