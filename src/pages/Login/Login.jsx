@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import {
   Container,
   Box,
@@ -17,7 +16,6 @@ import AppBar from "../../components/AppBar/AppBar";
 
 function Login() {
   const navigate = useNavigate();
-  const { signin } = useAuth();
 
   const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");

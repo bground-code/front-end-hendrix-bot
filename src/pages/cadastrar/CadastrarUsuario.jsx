@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import { Container, Box, Stack, Grid } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
 import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
@@ -27,15 +26,15 @@ function CadastrarUsuario() {
       <Grid
         container
         direction="row"
-        columnSpacing={5}
+        columnGap={{ xs: 3, sm: 5, md: 4, lg: 6, xl: 8 }}
         pt={8}
         sx={{ minHeight: "100vh" }}
         minWidth="100vw"
       >
-        <Grid item xs={3} sm={2}>
+        <Grid item>
           <SideMenu />
         </Grid>
-        <Grid item xs={8} sm={9}>
+        <Grid item>
           <CreateUsuario />
         </Grid>
       </Grid>

@@ -2,11 +2,15 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, IconButton, Stack, Typography, Button } from "@mui/joy";
 import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
-import DrawerMenu from "../Menu/DrawerMenu";
+
 import LogoutButton from "../Buttons/LogoutButton";
 
 function AppBar({ showMenuButton, buttonType }) {
   const navigate = useNavigate();
+
+  const handleHomeButton = () => {
+    navigate("/home");
+  };
 
   const handleButtonClick = () => {
     if (buttonType === "login") {
@@ -46,12 +50,12 @@ function AppBar({ showMenuButton, buttonType }) {
       zIndex={1000}
     >
       <Stack direction="row" alignItems="center" px={2}>
-        {showMenuButton && <DrawerMenu />}
-
-        <IconButton disabled>
-          <AdbRoundedIcon />
-        </IconButton>
-        <Typography>Hendrix-Bot</Typography>
+        <Button variant="plain" color="neutral" onClick={handleHomeButton}>
+          <IconButton disabled>
+            <AdbRoundedIcon />
+          </IconButton>
+          <Typography>Hendrix-Bot</Typography>
+        </Button>
       </Stack>
       <Stack direction="row" alignItems="center" px={2}>
         {getButton()}

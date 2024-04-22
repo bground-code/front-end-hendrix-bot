@@ -3,7 +3,7 @@ import Chat from "../../chat/Chat";
 import { Container } from "@mui/joy";
 
 import AppBar from "../../components/AppBar/AppBar";
-
+const papelUsuario = localStorage.getItem("userRole");
 
 function Home() {
   const token = sessionStorage.getItem("token");
@@ -34,7 +34,7 @@ function Home() {
       {tokenPresente ? (
         <AppBar showMenuButton={true} buttonType="sair" />
       ) : (
-        <AppBar showMenuButton={false} buttonType="login" />
+        <AppBar buttonType="login" />
       )}
       <Chat></Chat>
     </Container>
