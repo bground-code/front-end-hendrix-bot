@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, IconButton, Stack, Typography, Button } from "@mui/joy";
 import AdbRoundedIcon from "@mui/icons-material/AdbRounded";
-import DrawerMenu from "../Menu/DrawerMenu";
-import ProfileMenu from "../Menu/ProfileMenu";
+
+import LogoutButton from "../Buttons/LogoutButton";
 
 function AppBar({ showMenuButton, buttonType }) {
   const navigate = useNavigate();
+
+  const handleHomeButton = () => {
+    navigate("/home");
+  };
 
   const handleButtonClick = () => {
     if (buttonType === "login") {
@@ -27,8 +31,8 @@ function AppBar({ showMenuButton, buttonType }) {
           Voltar
         </Button>
       );
-    } else if (buttonType === "menu") {
-      return <ProfileMenu />;
+    } else if (buttonType === "sair") {
+      return <LogoutButton />;
     }
   };
 
@@ -36,22 +40,22 @@ function AppBar({ showMenuButton, buttonType }) {
     <Box
       bgcolor={"#171A1C"}
       width={"100%"}
-      p={1}
+      p={2}
       top={0}
       left={0}
       position="fixed"
-      height={80}
       display={"flex"}
       alignItems="center"
       justifyContent="space-between"
+      zIndex={1000}
     >
       <Stack direction="row" alignItems="center" px={2}>
-        {showMenuButton ? <DrawerMenu /> : <Box />}
-
-        <IconButton disabled>
-          <AdbRoundedIcon />
-        </IconButton>
-        <Typography>Hendrix-Bot</Typography>
+        <Button variant="plain" color="neutral" onClick={handleHomeButton}>
+          <IconButton disabled>
+            <AdbRoundedIcon />
+          </IconButton>
+          <Typography>Hendrix-Bot</Typography>
+        </Button>
       </Stack>
       <Stack direction="row" alignItems="center" px={2}>
         {getButton()}

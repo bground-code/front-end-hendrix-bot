@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import {
-  Container,
-  Box,
-  Input,
-  Button,
-  FormControl,
-  FormLabel,
-  Stack,
-  Typography,
-  Alert,
-  RadioGroup,
-  Radio,
-} from "@mui/joy";
+import { useNavigate, useParams } from "react-router-dom";
+import { Container, Box, Stack, Grid } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
 import CreateUsuario from "../../components/Forms/CreateUsuarioForm";
+import SideMenu from "../../components/Menu/SideMenu";
 
 function CadastrarUsuario() {
+  const [tipoUsuario, setTipoUsuario] = useState("");
+
   return (
     <Container
       maxWidth={false}
@@ -33,9 +23,21 @@ function CadastrarUsuario() {
       }}
     >
       <AppBar showMenuButton={true} buttonType="menu" />
-      <Box width={"80%"} mt={6}>
-        <CreateUsuario></CreateUsuario>
-      </Box>
+      <Grid
+        container
+        direction="row"
+        columnGap={{ xs: 3, sm: 5, md: 4, lg: 6, xl: 8 }}
+        pt={8}
+        sx={{ minHeight: "100vh" }}
+        minWidth="100vw"
+      >
+        <Grid item>
+          <SideMenu />
+        </Grid>
+        <Grid item>
+          <CreateUsuario />
+        </Grid>
+      </Grid>
     </Container>
   );
 }

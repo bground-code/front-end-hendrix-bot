@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 import { Container, Box } from "@mui/joy";
 import AppBar from "../../components/AppBar/AppBar";
 import UpdateUsuario from "../../components/Forms/UpdateUsuarioForm";
