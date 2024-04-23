@@ -7,7 +7,7 @@ import CadastrarUsuario from "../pages/cadastrar/CadastrarUsuario";
 import CadastrarAluno from "../pages/cadastrar/CadastrarAluno";
 import EditarAluno from "../pages/cadastrar/EditarAluno";
 import EditarUsuario from "../pages/cadastrar/EditarUsuario";
-import GerenciarIntents from "../pages/gerenciar/GerenciarIntents";
+import GerenciarIntents from "../pages/cadastrar/GerenciarIntents";
 import BuscarUsuarios from "../pages/UserProfile/BuscarUsuarios";
 
 const RoutesApp = () => {
