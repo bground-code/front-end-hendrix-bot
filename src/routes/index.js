@@ -8,6 +8,8 @@ import CadastrarAluno from "../pages/cadastrar/CadastrarAluno";
 import EditarAluno from "../pages/cadastrar/EditarAluno";
 import EditarUsuario from "../pages/cadastrar/EditarUsuario";
 import GerenciarIntents from "../pages/cadastrar/GerenciarIntents";
+import StoryListComponent from "../pages/cadastrar/StoryListComponent";
+
 import BuscarUsuarios from "../pages/UserProfile/BuscarUsuarios";
 
 const RoutesApp = () => {
@@ -23,6 +25,7 @@ const RoutesApp = () => {
           <Route exact path="/editar-aluno" element={<EditarAluno />} />
           <Route exact path="/editar-usuario" element={<EditarUsuario />} />
           <Route exact path="/intents" element={<GerenciarIntents />} />
+          <Route exact path="/story" element={<StoryListComponent />} />
           <Route exact path="/buscar-todos" element={<BuscarUsuarios />} />
         </Routes>
       </Fragment>

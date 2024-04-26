@@ -9,7 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/joy/Button';
+import TextField from '@mui/material/TextField';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import './StylesIntents.css';
 
 const darkTheme = createTheme({
     palette: {
@@ -21,6 +23,7 @@ const GerenciarIntents = () => {
     const [intents, setIntents] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [currentIntent, setCurrentIntent] = useState(null);
+    const [newIntentName, setNewIntentName] = useState('');
 
     const fetchIntents = async () => {
         try {
@@ -41,23 +44,26 @@ const GerenciarIntents = () => {
     const handleOpenModal = (intentId) => {
         try {
             const intentToEdit = intents.find(intent => intent.id === intentId);
-            if (intentToEdit) {
-                let message = `Editar Intenção: ${intentToEdit.name}\n\n`;
-                if (intentToEdit.responses && intentToEdit.responses.length > 0) {
-                    message += "Respostas:\n";
-                    intentToEdit.responses.forEach((response, index) => {
-                        message += `${index + 1}. ${response.text}\n`;
-                    });
-                } else {
-                    message += "Nenhuma resposta disponível";
-                }
-                const editedResponse = prompt(message);
-                if (editedResponse !== null) {
-                    alert("Resposta editada com sucesso!");
-                }
-            }
+            setCurrentIntent(intentToEdit);
+            setNewIntentName(intentToEdit.name);
+            setOpenModal(true);
         } catch (error) {
             console.error('Error handling edit intent:', error);
+        }
+    };
+
+    const handleEditIntentName = async () => {
+        try {
+            if (newIntentName.trim() !== '') {
+                await axios.put(`http://localhost:8081/rasa/intents/${currentIntent.id}`, {name: newIntentName});
+                alert("Nome da intenção atualizado com sucesso!");
+                fetchIntents();
+                setOpenModal(false);
+            } else {
+                alert("O nome da intenção não pode estar em branco!");
+            }
+        } catch (error) {
+            console.error('Error editing intent name:', error);
         }
     };
 
@@ -65,15 +71,9 @@ const GerenciarIntents = () => {
         try {
             const newIntentName = prompt("Digite o nome da nova intenção:");
             if (newIntentName !== null) {
-                const responses = [];
-                let responseText = prompt("Digite o texto da resposta:");
-                while (responseText !== null) {
-                    responses.push({ text: responseText });
-                    responseText = prompt("Digite outro texto da resposta (ou clique em Cancelar para finalizar):");
-                }
                 const newIntent = {
                     name: newIntentName,
-                    responses: responses,
+                    responses: [], // Empty responses array
                 };
                 await axios.post('http://localhost:8081/rasa/intents', newIntent);
                 alert("Intenção criada com sucesso!");
@@ -103,52 +103,52 @@ const GerenciarIntents = () => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <Box
-                sx={{
-                    width: '100%',
-                    padding: '20px',
-                    backgroundColor: '#212121',
-                    minHeight: '100vh',
-                }}
-            >
-                <Typography level="h4" textAlign="center" sx={{ mb: 2, color: 'white' }}>
+            <Box className="container">
+                <Typography variant="h4" className="title" textAlign="center">
                     Gerenciar Intenções
                 </Typography>
-                <Button onClick={handleCreateIntent} variant="contained" color="primary" sx={{ mb: 2 }}>
+                <Button onClick={handleCreateIntent} variant="contained" color="primary" className="create-button">
                     Criar Nova Intenção
                 </Button>
-                <List sx={{ backgroundColor: '#424242', borderRadius: '10px', p: 0 }}>
+                <List className="intent-list">
                     {intents.map(intent => (
-                        <ListItem
-                            key={intent.id}
-                            onClick={() => handleOpenModal(intent.id)}
-                            sx={{ cursor: 'pointer', '&:hover': { backgroundColor: '#616161' } }}
-                        >
-                            <Typography sx={{ fontWeight: 'bold', color: 'white' }}>
+                        <ListItem key={intent.id} className="intent-item">
+                            <Typography className="intent-name">
                                 {intent.name}
                             </Typography>
-                            <Typography variant="body2" sx={{ color: 'gray' }}>
-                                Clique para ver detalhes
-                            </Typography>
-                            <Button onClick={() => handleDeleteIntent(intent.id)} variant="contained" color="secondary">
+                            <Button onClick={() => handleOpenModal(intent.id)} variant="contained" color="primary"
+                                    className="edit-button">
+                                Editar
+                            </Button>
+                            <Button onClick={() => handleDeleteIntent(intent.id)} variant="contained" color="secondary"
+                                    className="delete-button">
                                 Deletar
                             </Button>
+                            {currentIntent && openModal && (
+                                <Dialog open={openModal} onClose={handleCloseModal}>
+                                    <DialogTitle>{`Editar Nome da Intenção: ${currentIntent.name}`}</DialogTitle>
+                                    <DialogContent>
+                                        <TextField
+                                            autoFocus
+                                            margin="dense"
+                                            label="Novo Nome"
+                                            fullWidth
+                                            value={newIntentName}
+                                            onChange={(e) => setNewIntentName(e.target.value)}
+                                        />
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleEditIntentName} color="primary">Salvar</Button>
+                                        <Button onClick={handleCloseModal} color="secondary">Cancelar</Button>
+                                    </DialogActions>
+                                </Dialog>
+                            )}
+
                         </ListItem>
                     ))}
                 </List>
-                {currentIntent && (
-                    <Dialog open={openModal} onClose={handleCloseModal}>
-                        <DialogTitle>{`Detalhes da Intenção: ${currentIntent.name}`}</DialogTitle>
-                        <DialogContent>
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={handleCloseModal} color="primary">Fechar</Button>
-                        </DialogActions>
-                    </Dialog>
-                )}
             </Box>
         </ThemeProvider>
     );
 }
-
-export default GerenciarIntents;
+    export default GerenciarIntents;

@@ -1,0 +1,169 @@
+/* Estilos Gerais */
+* {
+    box-sizing: border-box;
+}
+
+body, h3, input, button, li {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 100%;
+    padding: 20px;
+    margin: auto;
+}
+
+/* Barra de Ferramentas */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toolbar input[type="text"] {
+    flex-grow: 2;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.toolbar button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toolbar button:hover {
+    background-color: #0056b3;
+}
+
+/* Formulário para Nova História */
+.new-story-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.new-story-form input[type="text"] {
+    flex: 1;
+    min-width: 120px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.new-story-form button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.new-story-form button:hover {
+    background-color: #218838;
+}
+
+/* Listagem de Histórias */
+.list-story {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.list-story .story {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.list-story .story h3 input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.list-story .story button {
+    padding: 10px 16px;
+    font-size: 1rem;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-story .story button.update-story-btn {
+    background-color: #007bff;
+}
+
+.list-story .story button:hover {
+    opacity: 0.9;
+}
+
+.list-story .story ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.list-story .story ul li {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.list-story .story ul li input[type="text"] {
+    width: calc(50% - 22px);
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.list-story .story ul li strong {
+    min-width: 60px;
+    display: inline-block;
+}
+
+/* Quebras de linha responsivas */
+@media (max-width: 768px) {
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .new-story-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .list-story .story ul li input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

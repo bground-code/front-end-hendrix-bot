@@ -1,0 +1,72 @@
+/* styles.css */
+
+.container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.title {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+.create-button {
+    margin-bottom: 20px;
+    background-color: #007bff;
+    color: #1e3553;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #0056b3;
+}
+
+.intent-list {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.intent-item {
+    cursor: pointer;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.intent-item:hover {
+    background-color: #f9f9f9;
+}
+
+.intent-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+
+.intent-description {
+    color: #666;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #ff0000;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+
+.delete-button:hover {
+    background-color: #c82333;
+}
